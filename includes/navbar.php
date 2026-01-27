@@ -20,12 +20,6 @@ $base_url = "http://localhost/forencart/";
                     <li class="has-small-dropdown">
                         <a href="#">My Account <i class="fa-solid fa-angle-down"></i></a>
                     </li>
-                    <li class="has-small-dropdown">
-                        <a href="#">English <i class="fa-solid fa-angle-down"></i></a>
-                    </li>
-                    <li class="has-small-dropdown">
-                        <a href="#">$ US Dollar <i class="fa-solid fa-angle-down"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -81,21 +75,11 @@ $base_url = "http://localhost/forencart/";
 
             <ul class="nav-links">
                 <li><a href="<?php echo $base_url; ?>">HOME</a></li>
-                <li>
-                    <a href="#">FEATURES <span class="badge blue">NEW</span> <i class="fa-solid fa-angle-down"></i></a>
-                </li>
-                <li class="has-dropdown">
-                    <a href="#">PAGES <i class="fa-solid fa-angle-down"></i></a>
-                    <!-- <ul class="dropdown-menu">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul> -->
-                </li>
+                <li><a href="<?php echo $base_url; ?>">SHOP</a></li>
                 <li>
                     <a href="#">CATEGORIES <span class="badge orange">HOT</span> <i class="fa-solid fa-angle-down"></i></a>
                 </li>
-                <li><a href="#">ACCESSORIES</a></li>
+                <li><a href="#">PAGES</a></li>
                 <li><a href="#">BLOG</a></li>
             </ul>
 

@@ -7,6 +7,9 @@ require_once __DIR__ . '/db.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Base URL (GLOBAL)
+$base_url = "http://localhost/forencart/";
 ?>
 <!DOCTYPE html>
 <html lang="en">
