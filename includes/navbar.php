@@ -75,7 +75,7 @@ $base_url = "http://localhost/forencart/";
 
             <ul class="nav-links">
                 <li><a href="<?php echo $base_url; ?>">HOME</a></li>
-                <li><a href="<?php echo $base_url; ?>">SHOP</a></li>
+                <li><a href="<?php echo $base_url; ?>shop.php">SHOP</a></li>
                 <li>
                     <a href="#">CATEGORIES <span class="badge orange">HOT</span> <i class="fa-solid fa-angle-down"></i></a>
                 </li>

@@ -169,3 +169,12 @@
     background: #9ca3af;
 }
 
+.banner-thumb {
+    width: 100px;          /* 👈 small width */
+    height: auto;          /* keep aspect ratio */
+    max-height: 60px;      /* optional safety */
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
