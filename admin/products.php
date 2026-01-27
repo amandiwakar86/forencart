@@ -3,43 +3,63 @@ include 'includes/admin-header.php';
 include 'includes/admin-sidebar.php';
 
 $products = mysqli_query($conn, "
-    SELECT products.*, categories.name AS category
-    FROM products
-    LEFT JOIN categories ON products.category_id = categories.id
-    ORDER BY products.id DESC
+    SELECT p.*, c.name AS category_name
+    FROM products p
+    LEFT JOIN categories c ON p.category_id = c.id
+    ORDER BY p.id DESC
 ");
 ?>
 
 <main class="admin-content">
 
     <h1>Products</h1>
-
     <a href="add-product.php" class="admin-btn">+ Add Product</a>
 
     <table class="admin-table">
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
+        <tbody>
         <?php while ($p = mysqli_fetch_assoc($products)) { ?>
-        <tr>
-            <td>
-                <img src="<?php echo $base_url; ?>assets/images/products/<?php echo $p['image']; ?>"
-                     class="product-thumb">
-            </td>
-            <td><?php echo htmlspecialchars($p['name']); ?></td>
-            <td><?php echo $p['category']; ?></td>
-            <td>₹<?php echo $p['price']; ?></td>
-        </tr>
-        <?php } ?>
+            <tr>
+                <td><?php echo $p['id']; ?></td>
 
+                <td>
+                    <img 
+                        src="../assets/images/products/<?php echo $p['image']; ?>" 
+                        class="product-thumb"
+                        alt=""
+                    >
+                </td>
+
+                <td><?php echo htmlspecialchars($p['name']); ?></td>
+                <td><?php echo $p['category_name']; ?></td>
+                <td>₹<?php echo number_format($p['price'], 2); ?></td>
+
+                <td class="actions">
+                    <a href="edit-product.php?id=<?php echo $p['id']; ?>" class="edit-btn">Edit</a>
+                    <a 
+                        href="delete-product.php?id=<?php echo $p['id']; ?>" 
+                        class="delete-btn"
+                        onclick="return confirm('Are you sure you want to delete this product?')"
+                    >
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+        </tbody>
     </table>
 
 </main>
 
-</div>
 </body>
 </html>

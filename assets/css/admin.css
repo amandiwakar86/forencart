@@ -178,3 +178,88 @@
     border: 1px solid #ddd;
 }
 
+
+/* FORCE product image size in admin */
+.admin-table img {
+    width: 50px !important;
+    height: 70px !important;
+    object-fit: contain !important;
+    background: #f3f4f6;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+/* ============================
+   ADMIN FORM (ADD / EDIT)
+============================ */
+
+.admin-content h1 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.admin-form {
+    max-width: 520px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.admin-form input,
+.admin-form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+}
+
+.admin-form input[type="file"] {
+    padding: 6px;
+}
+
+.admin-form input:focus,
+.admin-form select:focus {
+    outline: none;
+    border-color: #f35d06;
+    box-shadow: 0 0 0 2px rgba(243,93,6,0.2);
+}
+
+.admin-form button {
+    width: 100%;
+    padding: 12px;
+    background: #f35d06;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-form button:hover {
+    background: #e04e00;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 600px) {
+    .admin-form {
+        padding: 20px;
+    }
+}
+

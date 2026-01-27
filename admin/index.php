@@ -19,13 +19,13 @@ include 'includes/admin-sidebar.php';
         <div class="dash-card">
             <h3>Products</h3>
             <p>Add & manage products</p>
-            <span class="coming">Coming Soon</span>
+            <a href="products.php">Manage</a>
         </div>
 
         <div class="dash-card">
             <h3>Orders</h3>
             <p>Track customer orders</p>
-            <span class="coming">Coming Soon</span>
+            <a href="orders.php">Manage</a>
         </div>
 
     </div>

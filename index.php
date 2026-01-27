@@ -6,21 +6,25 @@ include_once 'includes/header.php';
 include_once 'includes/navbar.php';
 ?>
 
-<main class="container">
-
+<!-- PAGE-SPECIFIC CSS -->
 <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/hero.css">
 
-<?php include 'includes/hero.php'; 
-include 'includes/categories-section.php';
-include 'includes/featured-products.php';
-include 'includes/why-us.php';
+<main>
 
-?>
+    <?php
+        include 'includes/hero.php';
+        include 'includes/categories-section.php';
+        include 'includes/featured-products.php';
+        include 'includes/mixed-products.php';
+        include 'includes/why-us.php';
+    ?>
 
-<script src="<?php echo $base_url; ?>assets/js/hero.js"></script>
 </main>
 
+<!-- PAGE-SPECIFIC JS -->
+<script src="<?php echo $base_url; ?>assets/js/hero.js"></script>
+
 <?php
-// Load footer (if created later)
+// Load footer
 include_once 'includes/footer.php';
 ?>

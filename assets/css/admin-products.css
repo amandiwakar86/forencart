@@ -1,0 +1,95 @@
+.product-form {
+    max-width: 600px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+.banner-thumb {
+    width: 260px;
+    height: 100px;
+    object-fit: cover;
+}
+
+
+.admin-form input,
+.admin-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.admin-form button {
+    padding: 10px 20px;
+    background: #111827;
+    color: #fff;
+    border: none;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+/* Product image thumbnail in admin table */
+.product-thumb {
+    width: 50px;          /* 👈 SMALL WIDTH */
+    height: 70px;         /* 👈 CONTROL HEIGHT */
+    object-fit: contain;  /* 👈 No distortion */
+    background: #f3f4f6;
+    padding: 4px;
+    border-radius: 6px;
+    display: block;
+}
+
+.actions a {
+    margin-right: 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.edit-btn {
+    color: #2563eb;
+}
+
+.delete-btn {
+    color: #dc2626;
+}
+
+.admin-btn {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 8px 16px;
+    background: #f35d06;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+}

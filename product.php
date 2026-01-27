@@ -64,14 +64,11 @@ $relatedProducts = mysqli_query($conn, "
                 <?php echo nl2br(htmlspecialchars($product['description'])); ?>
             </p>
 
-            <!-- ADD TO CART -->
-            <form method="post" action="cart.php">
-                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                <button type="submit" class="add-to-cart">
-                    Add to Cart
-                </button>
-            </form>
-
+           <!-- ADD TO CART -->
+            <a href="<?php echo $base_url; ?>add-to-cart.php?id=<?php echo $product['id']; ?>" 
+                class="add-to-cart">
+                Add to Cart
+            </a>
         </div>
 
     </div>
