@@ -10,7 +10,12 @@ include_once 'includes/navbar.php';
 
 <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/hero.css">
 
-<?php include 'includes/hero.php'; ?>
+<?php include 'includes/hero.php'; 
+include 'includes/categories-section.php';
+include 'includes/featured-products.php';
+include 'includes/why-us.php';
+
+?>
 
 <script src="<?php echo $base_url; ?>assets/js/hero.js"></script>
     <h1>Welcome to ForenCart AMAM</h1>
