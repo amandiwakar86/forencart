@@ -8,7 +8,7 @@ include_once 'includes/navbar.php';
 
 <main class="container">
 
-    <h1>Welcome to ForenCart</h1>
+    <h1>Welcome to ForenCart AMAM</h1>
     <p>Your one-stop destination for all categories of products.</p>
 
 </main>
