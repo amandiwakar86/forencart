@@ -18,9 +18,6 @@ include 'includes/why-us.php';
 ?>
 
 <script src="<?php echo $base_url; ?>assets/js/hero.js"></script>
-    <h1>Welcome to ForenCart AMAM</h1>
-    <p>Your one-stop destination for all categories of products.</p>
-
 </main>
 
 <?php
