@@ -184,3 +184,31 @@
     .mobile-toggle { display: block; }
     .container-fluid { padding: 0 15px; }
 }
+
+
+.dept-item {
+    position: relative;
+}
+
+.dept-item > a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sub-departments {
+    display: none;
+    background: #f9f9f9;
+    padding-left: 30px;
+}
+
+.dept-item:hover .sub-departments {
+    display: block;
+}
+
+.sub-departments a {
+    display: block;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #444;
+}

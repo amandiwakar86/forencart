@@ -103,3 +103,46 @@
     font-size: 18px;
     color: #666;
 }
+
+/* PRICE FILTER */
+.price-filter input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.price-filter button {
+    width: 100%;
+    padding: 8px;
+    background: #111827;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+}
+
+/* PAGINATION */
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.pagination a {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    border-radius: 6px;
+}
+
+.pagination a.active {
+    background: #f35d06;
+    color: #fff;
+    border-color: #f35d06;
+}
+
+.shop-products {
+    min-height: 300px;
+    transition: 0.3s;
+}
