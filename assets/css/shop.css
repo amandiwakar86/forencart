@@ -1,21 +1,30 @@
+/* ===============================
+   SHOP PAGE
+================================ */
 .shop-page {
     padding: 40px;
-    background: #f9fafb;
+    background: #f5f7fa;
 }
 
 .shop-title {
-    font-size: 32px;
-    margin-bottom: 30px;
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
+/* ===============================
+   LAYOUT
+================================ */
 .shop-layout {
     display: flex;
     gap: 30px;
 }
 
-/* SIDEBAR */
+/* ===============================
+   SIDEBAR
+================================ */
 .shop-sidebar {
-    width: 240px;
+    width: 260px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -23,18 +32,21 @@
 
 .shop-sidebar h3 {
     margin-bottom: 15px;
+    font-size: 18px;
 }
 
 .shop-sidebar ul {
     list-style: none;
+    padding: 0;
 }
 
 .shop-sidebar ul li a {
     display: block;
-    padding: 10px;
+    padding: 10px 12px;
     color: #333;
     text-decoration: none;
     border-radius: 6px;
+    font-size: 14px;
 }
 
 .shop-sidebar ul li a:hover,
@@ -43,85 +55,119 @@
     color: #fff;
 }
 
-/* PRODUCTS */
+/* ===============================
+   PRODUCTS GRID
+================================ */
 .shop-products {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 25px;
 }
 
+/* ===============================
+   PRODUCT CARD
+================================ */
 .product-card {
     background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    transition: transform 0.3s;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+}
+
+/* IMAGE WRAPPER (IMPORTANT FIX) */
+.product-card a {
+    display: block;
 }
 
 .product-card img {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    height: 220px;
+    object-fit: contain;
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 10px;
 }
 
+/* ===============================
+   PRODUCT INFO
+================================ */
 .product-info {
-    padding: 15px;
     text-align: center;
+    margin-top: 12px;
 }
 
 .product-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 6px;
+}
+
+.product-info .price {
     font-size: 16px;
+    font-weight: 700;
+    color: #f35d06;
     margin-bottom: 10px;
 }
 
-.price {
-    font-weight: bold;
-    color: #f35d06;
-    margin-bottom: 12px;
-}
-
+/* ===============================
+   BUTTON
+================================ */
 .view-btn {
     display: inline-block;
-    padding: 8px 16px;
+    width: 100%;
+    padding: 10px 0;
     background: #111827;
     color: #fff;
-    text-decoration: none;
-    border-radius: 20px;
     font-size: 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 .view-btn:hover {
     background: #f35d06;
 }
 
-.no-products {
-    font-size: 18px;
-    color: #666;
-}
-
-/* PRICE FILTER */
+/* ===============================
+   PRICE FILTER
+================================ */
 .price-filter input {
     width: 100%;
     padding: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
 }
 
 .price-filter button {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     background: #111827;
     color: #fff;
     border: none;
     border-radius: 6px;
+    cursor: pointer;
 }
 
-/* PAGINATION */
+.price-filter button:hover {
+    background: #f35d06;
+}
+
+/* ===============================
+   PAGINATION
+================================ */
 .pagination {
+    grid-column: 1 / -1;
     margin-top: 30px;
     text-align: center;
 }
@@ -129,11 +175,11 @@
 .pagination a {
     display: inline-block;
     margin: 0 4px;
-    padding: 8px 12px;
+    padding: 8px 14px;
     border: 1px solid #ddd;
-    text-decoration: none;
-    color: #333;
     border-radius: 6px;
+    color: #333;
+    text-decoration: none;
 }
 
 .pagination a.active {
@@ -142,7 +188,15 @@
     border-color: #f35d06;
 }
 
-.shop-products {
-    min-height: 300px;
-    transition: 0.3s;
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 992px) {
+    .shop-layout {
+        flex-direction: column;
+    }
+
+    .shop-sidebar {
+        width: 100%;
+    }
 }

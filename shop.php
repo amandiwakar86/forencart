@@ -1,10 +1,8 @@
 <?php
 include_once 'includes/header.php';
 include_once 'includes/navbar.php';
-
-/* ======================
-   FETCH CATEGORIES
-====================== */
+$initialCategory = $_GET['category'] ?? '';
+/* FETCH CATEGORIES */
 $categories = mysqli_query(
     $conn,
     "SELECT * FROM categories WHERE status = 1 ORDER BY name ASC"
@@ -19,30 +17,23 @@ $categories = mysqli_query(
 
     <div class="shop-layout">
 
-        <!-- ================= SIDEBAR ================= -->
+        <!-- SIDEBAR -->
         <aside class="shop-sidebar">
 
             <h3>Categories</h3>
             <ul id="categoryList">
-                <li>
-                    <a href="#" data-category="">All Products</a>
-                </li>
+                <li><a href="#" data-category="">All Products</a></li>
 
                 <?php while ($cat = mysqli_fetch_assoc($categories)) { ?>
                     <li>
-                        <a 
-                            href="#" 
-                            data-category="<?php echo $cat['slug']; ?>"
-                        >
+                        <a href="#" data-category="<?php echo $cat['slug']; ?>">
                             <?php echo htmlspecialchars($cat['name']); ?>
                         </a>
                     </li>
                 <?php } ?>
             </ul>
 
-            <!-- PRICE FILTER -->
             <h3>Filter by Price</h3>
-
             <form id="priceFilter">
                 <input type="number" id="minPrice" placeholder="Min ₹">
                 <input type="number" id="maxPrice" placeholder="Max ₹">
@@ -51,15 +42,21 @@ $categories = mysqli_query(
 
         </aside>
 
-        <!-- ================= PRODUCTS ================= -->
+        <!-- PRODUCTS -->
         <section class="shop-products" id="shopProducts">
-            <!-- Products loaded by AJAX -->
+            <!-- Products load here via AJAX -->
         </section>
 
     </div>
 
 </main>
 
+<!-- PASS CATEGORY FROM URL TO JS -->
+<script>
+    window.SHOP_INITIAL_CATEGORY = "<?php echo isset($_GET['category']) ? $_GET['category'] : ''; ?>";
+</script>
+
+<!-- SHOP AJAX SCRIPT -->
 <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
 
 <?php include_once 'includes/footer.php'; ?>
