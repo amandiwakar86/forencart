@@ -21,24 +21,46 @@ $categoryIcons = [
 
 <header class="main-header">
 
-    <!-- ================= TOP BAR ================= -->
-    <div class="top-bar">
-        <div class="container-fluid">
+            <!-- ================= TOP BAR ================= -->
+            <div class="top-bar">
+            <div class="container-fluid">
+                
+                 <!-- LEFT SIDE -->
             <div class="top-left">
-                Default welcome msg!
-                <a href="#">Register</a> or <a href="#">Login</a>
+                <?php if (isset($_SESSION['user_id'])) { ?>
+                    Welcome, <strong><?php echo htmlspecialchars($_SESSION['user_name']); ?></strong>
+                <?php } else { ?>
+                    Default welcome msg!
+                    <a href="<?php echo $base_url; ?>auth/register.php">Register</a>
+                    or
+                    <a href="<?php echo $base_url; ?>auth/login.php">Login</a>
+                <?php } ?>
             </div>
 
+                <!-- RIGHT SIDE -->
             <div class="top-right">
                 <ul>
-                    <li><a href="#">Login</a></li>
-                    <li>
-                        <a href="#">My Account</a>
-                    </li>
+                    <?php if (isset($_SESSION['user_id'])) { ?>
+                        <li>
+                            <a href="<?php echo $base_url; ?>account.php">My Account</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>auth/logout.php">Logout</a>
+                        </li>
+                    <?php } else { ?>
+                        <li>
+                            <a href="<?php echo $base_url; ?>auth/login.php">Login</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $base_url; ?>auth/register.php">Register</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
+
+            </div>
         </div>
-    </div>
+
 
     <!-- ================= MIDDLE BAR ================= -->
     <div class="middle-bar">
@@ -50,13 +72,13 @@ $categoryIcons = [
                     <small>Shop all you want</small>
                 </a>
             </div>
-
             <form class="search-box" method="get" action="<?php echo $base_url; ?>shop.php">
-                <input type="text" name="q" placeholder="Search products...">
+                <input type="text" name="q" placeholder="Search products..." required>
                 <button type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
+
 
             <div class="contact-info">
                 <div class="icon-circle">

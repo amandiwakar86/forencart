@@ -1,8 +1,12 @@
 <?php
 include_once 'includes/header.php';
 include_once 'includes/navbar.php';
+
+/* URL se category & search */
 $initialCategory = $_GET['category'] ?? '';
-/* FETCH CATEGORIES */
+$search = $_GET['q'] ?? '';
+
+/* FETCH CATEGORIES (SIDEBAR KE LIYE) */
 $categories = mysqli_query(
     $conn,
     "SELECT * FROM categories WHERE status = 1 ORDER BY name ASC"
@@ -15,6 +19,12 @@ $categories = mysqli_query(
 
     <h1 class="shop-title">Shop Products</h1>
 
+    <?php if (!empty($search)) { ?>
+        <p class="search-result">
+            Showing results for "<strong><?php echo htmlspecialchars($search); ?></strong>"
+        </p>
+    <?php } ?>
+
     <div class="shop-layout">
 
         <!-- SIDEBAR -->
@@ -22,7 +32,9 @@ $categories = mysqli_query(
 
             <h3>Categories</h3>
             <ul id="categoryList">
-                <li><a href="#" data-category="">All Products</a></li>
+                <li>
+                    <a href="#" data-category="">All Products</a>
+                </li>
 
                 <?php while ($cat = mysqli_fetch_assoc($categories)) { ?>
                     <li>
@@ -44,19 +56,20 @@ $categories = mysqli_query(
 
         <!-- PRODUCTS -->
         <section class="shop-products" id="shopProducts">
-            <!-- Products load here via AJAX -->
+            <!-- Products AJAX se load honge -->
         </section>
 
     </div>
 
 </main>
 
-<!-- PASS CATEGORY FROM URL TO JS -->
+<!-- PHP se JS ko data pass -->
 <script>
-    window.SHOP_INITIAL_CATEGORY = "<?php echo isset($_GET['category']) ? $_GET['category'] : ''; ?>";
+    window.SHOP_INITIAL_CATEGORY = "<?php echo htmlspecialchars($initialCategory); ?>";
+    window.SHOP_INITIAL_SEARCH = "<?php echo htmlspecialchars($search); ?>";
 </script>
 
-<!-- SHOP AJAX SCRIPT -->
+<!-- SHOP JS -->
 <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
 
 <?php include_once 'includes/footer.php'; ?>

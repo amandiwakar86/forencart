@@ -1,60 +1,50 @@
-// ===============================
-// SHOP AJAX (FIXED VERSION)
-// ===============================
+document.addEventListener("DOMContentLoaded", function () {
 
-function loadProducts(category = '', min = '', max = '') {
+    const productsBox = document.getElementById("shopProducts");
+    const categoryLinks = document.querySelectorAll("#categoryList a");
+    const priceForm = document.getElementById("priceFilter");
 
-    const formData = new FormData();
-    formData.append('category', category);
-    formData.append('min', min);
-    formData.append('max', max);
+    let currentCategory = window.SHOP_INITIAL_CATEGORY || "";
+    let currentSearch = window.SHOP_INITIAL_SEARCH || "";
+    let minPrice = "";
+    let maxPrice = "";
 
-    fetch('ajax/shop-filter.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(res => res.text())
-    .then(html => {
-        document.getElementById('shopProducts').innerHTML = html;
-    });
-}
+    function loadProducts() {
+        productsBox.innerHTML = "<p>Loading products...</p>";
 
-/* INITIAL LOAD — READ FROM URL */
-document.addEventListener('DOMContentLoaded', () => {
+        const formData = new FormData();
+        formData.append("category", currentCategory);
+        formData.append("search", currentSearch);
+        formData.append("min", minPrice);
+        formData.append("max", maxPrice);
 
-    if (window.SHOP_INITIAL_CATEGORY && window.SHOP_INITIAL_CATEGORY !== '') {
-        loadProducts(window.SHOP_INITIAL_CATEGORY);
-    } else {
-        loadProducts();
+        fetch("ajax/shop-filter.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.text())
+        .then(html => {
+            productsBox.innerHTML = html;
+        });
     }
 
-});
-
-/* CATEGORY SIDEBAR CLICK */
-document.querySelectorAll('#categoryList a').forEach(link => {
-    link.addEventListener('click', e => {
-        e.preventDefault();
-
-        const category = link.dataset.category || '';
-        loadProducts(category);
-
-        // update URL without reload (important)
-        const url = category
-            ? `shop.php?category=${category}`
-            : `shop.php`;
-        window.history.pushState({}, '', url);
+    /* CATEGORY CLICK */
+    categoryLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            currentCategory = this.dataset.category;
+            loadProducts();
+        });
     });
-});
 
-/* PRICE FILTER */
-const priceForm = document.getElementById('priceFilter');
-if (priceForm) {
-    priceForm.addEventListener('submit', e => {
+    /* PRICE FILTER */
+    priceForm.addEventListener("submit", function (e) {
         e.preventDefault();
-
-        const min = document.getElementById('minPrice').value;
-        const max = document.getElementById('maxPrice').value;
-
-        loadProducts(window.SHOP_INITIAL_CATEGORY || '', min, max);
+        minPrice = document.getElementById("minPrice").value;
+        maxPrice = document.getElementById("maxPrice").value;
+        loadProducts();
     });
-}
+
+    /* INITIAL LOAD */
+    loadProducts();
+});

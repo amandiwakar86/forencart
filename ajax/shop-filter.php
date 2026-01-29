@@ -1,52 +1,63 @@
 <?php
-require_once '../includes/db.php';
-
-$base_url = "http://localhost/forencart/";
+require_once "../includes/db.php";
+require_once "../includes/header.php";
 
 $category = $_POST['category'] ?? '';
-$min = $_POST['min'] ?? '';
-$max = $_POST['max'] ?? '';
+$search   = $_POST['search'] ?? '';
+$min      = $_POST['min'] ?? '';
+$max      = $_POST['max'] ?? '';
 
-$where = "WHERE status = 1";
+$where = "WHERE products.status = 1";
 
 /* CATEGORY FILTER */
-if ($category !== '') {
-    $slug = mysqli_real_escape_string($conn, $category);
+if (!empty($category)) {
+    $cat = mysqli_real_escape_string($conn, $category);
+    $where .= " AND categories.slug = '$cat'";
+}
 
-    $where .= " AND category_id = (
-        SELECT id FROM categories WHERE slug = '$slug' LIMIT 1
+/* SEARCH FILTER (THIS WAS MISSING) */
+if (!empty($search)) {
+    $s = mysqli_real_escape_string($conn, $search);
+    $where .= " AND (
+        products.name LIKE '%$s%' 
+        OR products.description LIKE '%$s%'
     )";
 }
 
 /* PRICE FILTER */
-if ($min !== '' && is_numeric($min)) {
-    $where .= " AND price >= " . (float)$min;
+if ($min !== '') {
+    $where .= " AND products.price >= " . (float)$min;
+}
+if ($max !== '') {
+    $where .= " AND products.price <= " . (float)$max;
 }
 
-if ($max !== '' && is_numeric($max)) {
-    $where .= " AND price <= " . (float)$max;
-}
+$query = mysqli_query($conn, "
+    SELECT products.*, categories.name AS category_name
+    FROM products
+    LEFT JOIN categories ON products.category_id = categories.id
+    $where
+    ORDER BY products.id DESC
+");
 
-$q = mysqli_query($conn, "SELECT * FROM products $where ORDER BY id DESC");
-
-if (mysqli_num_rows($q) === 0) {
+if (mysqli_num_rows($query) === 0) {
     echo "<p class='no-products'>No products found.</p>";
     exit;
 }
 
-while ($p = mysqli_fetch_assoc($q)) {
+while ($p = mysqli_fetch_assoc($query)) {
 ?>
-<div class="product-card">
-    <a href="<?php echo $base_url; ?>product.php?id=<?php echo $p['id']; ?>">
-    <div class="product-image">
-        <img src="<?php echo $base_url; ?>assets/images/products/<?php echo $p['image']; ?>">
+    <div class="product-card">
+        <a href="../product.php?id=<?php echo $p['id']; ?>">
+        <img src="<?php echo $base_url; ?>assets/images/products/<?php echo $p['image'] ?: 'placeholder.png'; ?>">
+        </a>
+
+        <div class="product-info">
+            <h4><?php echo htmlspecialchars($p['name']); ?></h4>
+            <p class="price">₹<?php echo number_format($p['price'], 2); ?></p>
+            <a href="../product.php?id=<?php echo $p['id']; ?>" class="view-btn">
+                View Product
+            </a>
+        </div>
     </div>
-    </a>
-    <h4><?php echo htmlspecialchars($p['name']); ?></h4>
-    <p class="price">₹<?php echo number_format($p['price'],2); ?></p>
-        <a 
-    href="<?php echo $base_url; ?>product.php?id=<?php echo $product['id']; ?>" 
-    class="btn">
-    View Product</a>
-</div>
 <?php } ?>
