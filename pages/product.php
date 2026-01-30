@@ -1,7 +1,7 @@
 
 <?php
-include_once 'includes/header.php';
-include_once 'includes/navbar.php';
+include_once '../includes/header.php';
+include_once '../includes/navbar.php';
 
 /* VALIDATE PRODUCT ID */
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -33,6 +33,7 @@ $relatedProducts = mysqli_query($conn, "
       AND id != $product_id
     LIMIT 4
 ");
+
 ?>
 
 <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/product.css">
@@ -65,7 +66,7 @@ $relatedProducts = mysqli_query($conn, "
             </p>
 
            <!-- ADD TO CART -->
-            <a href="<?php echo $base_url; ?>add-to-cart.php?id=<?php echo $product['id']; ?>" 
+            <a href="<?php echo $base_url; ?>pages/add-to-cart.php?id=<?php echo $product['id']; ?>" 
                 class="add-to-cart">
                 Add to Cart
             </a>
@@ -82,7 +83,7 @@ $relatedProducts = mysqli_query($conn, "
             <div class="related-grid">
                 <?php while ($rel = mysqli_fetch_assoc($relatedProducts)) { ?>
                     <div class="related-card">
-                        <a href="<?php echo $base_url; ?>product.php?id=<?php echo $rel['id']; ?>">
+                        <a href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $rel['id']; ?>">
                             <img 
                                 src="<?php echo $base_url; ?>assets/images/products/<?php echo $rel['image'] ?: 'placeholder.png'; ?>"
                                 alt="<?php echo htmlspecialchars($rel['name']); ?>"
@@ -99,4 +100,4 @@ $relatedProducts = mysqli_query($conn, "
 
 </main>
 
-<?php include_once 'includes/footer.php'; ?>
+<?php include_once '../includes/footer.php'; ?>

@@ -1,5 +1,5 @@
 <?php
-include 'includes/header.php';
+include '../includes/header.php';
 
 if (isset($_POST['qty'])) {
     foreach ($_POST['qty'] as $id => $qty) {

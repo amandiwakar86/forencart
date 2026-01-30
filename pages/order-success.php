@@ -1,6 +1,6 @@
 <?php
-include 'includes/header.php';
-include 'includes/navbar.php';
+include '../includes/header.php';
+include '../includes/navbar.php';
 ?>
 
 <main style="padding:60px;text-align:center;">
@@ -10,4 +10,4 @@ include 'includes/navbar.php';
     <a href="shop.php" class="btn">Continue Shopping</a>
 </main>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

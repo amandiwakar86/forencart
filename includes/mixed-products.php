@@ -24,7 +24,7 @@ $products = mysqli_query($conn, "
                     <div class="product-card">
 
                         <a 
-                            href="<?php echo $base_url; ?>product.php?id=<?php echo $product['id']; ?>" 
+                            href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $product['id']; ?>" 
                             class="product-image"
                         >
                             <img 
@@ -48,7 +48,7 @@ $products = mysqli_query($conn, "
         </div>
 
         <div class="view-more">
-            <a href="<?php echo $base_url; ?>shop.php">View All Products</a>
+            <a href="<?php echo $base_url; ?>pages/shop.php">View All Products</a>
         </div>
 
     </div>

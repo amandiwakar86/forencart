@@ -16,7 +16,7 @@ $products = mysqli_query($conn, "
 
         <div class="section-header">
             <h2>Featured Products</h2>
-            <a href="<?php echo $base_url; ?>shop.php" class="view-all">
+            <a href="<?php echo $base_url; ?>pages/shop.php" class="view-all">
                 View All →
             </a>
         </div>
@@ -30,7 +30,7 @@ $products = mysqli_query($conn, "
 
                         <!-- IMAGE WRAPPER (IMPORTANT) -->
                         <a 
-                            href="<?php echo $base_url; ?>product.php?id=<?php echo $product['id']; ?>" 
+                            href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $product['id']; ?>" 
                             class="product-image"
                         >
                             <img 
@@ -45,7 +45,7 @@ $products = mysqli_query($conn, "
                             <p class="price">₹<?php echo number_format($product['price'], 2); ?></p>
 
                             <a 
-                                href="<?php echo $base_url; ?>product.php?id=<?php echo $product['id']; ?>" 
+                                href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $product['id']; ?>" 
                                 class="btn"
                             >
                                 View Product

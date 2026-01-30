@@ -15,9 +15,9 @@
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="<?php echo $base_url; ?>">Home</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php">Shop</a></li>
-                <li><a href="<?php echo $base_url; ?>cart.php">Cart</a></li>
-                <li><a href="<?php echo $base_url; ?>contact.php">Contact</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php">Shop</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/cart.php">Cart</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/contact.php">Contact</a></li>
             </ul>
         </div>
 
@@ -25,9 +25,9 @@
         <div class="footer-box">
             <h4>Categories</h4>
             <ul>
-                <li><a href="<?php echo $base_url; ?>shop.php?category=electronics">Electronics</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php?category=fashion">Fashion</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php?category=jewellery">Jewellery</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php?category=electronics">Electronics</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php?category=fashion">Fashion</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php?category=jewellery">Jewellery</a></li>
             </ul>
         </div>
 

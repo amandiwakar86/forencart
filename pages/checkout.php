@@ -1,6 +1,6 @@
 <?php
-include 'includes/header.php';
-include 'includes/navbar.php';
+include '../includes/header.php';
+include '../includes/navbar.php';
 
 $cart = $_SESSION['cart'] ?? [];
 
@@ -61,4 +61,4 @@ if (empty($cart)) {
 
 </main>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

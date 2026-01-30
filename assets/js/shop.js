@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("min", minPrice);
         formData.append("max", maxPrice);
 
-        fetch("ajax/shop-filter.php", {
+        fetch("../pages/shop-filter.php", {
             method: "POST",
             body: formData
         })

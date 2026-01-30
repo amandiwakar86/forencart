@@ -3,6 +3,14 @@
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/db.php';
 
+// Cart Count
+function cartCount() {
+    if (!isset($_SESSION['cart'])) {
+        return 0;
+    }
+    return array_sum($_SESSION['cart']);
+}
+
 // Start session only once
 if (session_status() === PHP_SESSION_NONE) {
     session_start();

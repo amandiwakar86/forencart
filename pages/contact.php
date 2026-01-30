@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/header.php';
-include_once 'includes/navbar.php';
+include_once '../includes/header.php';
+include_once '../includes/navbar.php';
 ?>
 
 <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/contact.css">
@@ -34,4 +34,4 @@ include_once 'includes/navbar.php';
 
 </main>
 
-<?php include_once 'includes/footer.php'; ?>
+<?php include_once '../includes/footer.php'; ?>

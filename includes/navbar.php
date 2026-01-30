@@ -42,7 +42,7 @@ $categoryIcons = [
                 <ul>
                     <?php if (isset($_SESSION['user_id'])) { ?>
                         <li>
-                            <a href="<?php echo $base_url; ?>account.php">My Account</a>
+                            <a href="<?php echo $base_url; ?>pages/account.php">My Account</a>
                         </li>
                         <li>
                             <a href="<?php echo $base_url; ?>auth/logout.php">Logout</a>
@@ -72,7 +72,7 @@ $categoryIcons = [
                     <small>Shop all you want</small>
                 </a>
             </div>
-            <form class="search-box" method="get" action="<?php echo $base_url; ?>shop.php">
+            <form class="search-box" method="get" action="<?php echo $base_url; ?>pages/shop.php">
                 <input type="text" name="q" placeholder="Search products..." required>
                 <button type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -122,7 +122,7 @@ $categoryIcons = [
                     ?>
                         <div class="dept-item">
 
-                            <a href="<?php echo $base_url; ?>shop.php?category=<?php echo $cat['slug']; ?>">
+                            <a href="<?php echo $base_url; ?>pages/shop.php?category=<?php echo $cat['slug']; ?>">
                                 <i class="fa-solid <?php echo $icon; ?>"></i>
                                 <?php echo htmlspecialchars($cat['name']); ?>
                             </a>
@@ -130,7 +130,7 @@ $categoryIcons = [
                             <?php if (mysqli_num_rows($subCats) > 0) { ?>
                                 <div class="sub-departments">
                                     <?php while ($sub = mysqli_fetch_assoc($subCats)) { ?>
-                                        <a href="<?php echo $base_url; ?>shop.php?category=<?php echo $sub['slug']; ?>">
+                                        <a href="<?php echo $base_url; ?>pages/shop.php?category=<?php echo $sub['slug']; ?>">
                                             <?php echo htmlspecialchars($sub['name']); ?>
                                         </a>
                                     <?php } ?>
@@ -145,21 +145,27 @@ $categoryIcons = [
             <!-- ===== MAIN MENU ===== -->
             <ul class="nav-links">
                 <li><a href="<?php echo $base_url; ?>">HOME</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php">SHOP</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php">NEW ARRIVALS</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php">BEST SELLERS</a></li>
-                <li><a href="<?php echo $base_url; ?>shop.php">OFFERS</a></li>
-                <li><a href="<?php echo $base_url; ?>blog.php">BLOG</a></li>
-                <li><a href="<?php echo $base_url; ?>contact.php">CONTACT</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php">SHOP</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php">NEW ARRIVALS</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php">BEST SELLERS</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/shop.php">OFFERS</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/blog.php">BLOG</a></li>
+                <li><a href="<?php echo $base_url; ?>pages/contact.php">CONTACT</a></li>
             </ul>
 
             <!-- ===== ICONS ===== -->
             <div class="nav-icons">
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
-                <a href="<?php echo $base_url; ?>cart.php" class="cart-icon">
+                <a href="<?php echo $base_url; ?>pages/wishlist.php">
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+                <a href="<?php echo $base_url; ?>pages/compare.php">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </a>
+                <a href="<?php echo $base_url; ?>pages/cart.php" class="cart-icon">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="count">0</span>
+                    <span class="count">
+                        <?php echo cartCount(); ?>
+                    </span>
                 </a>
             </div>
 

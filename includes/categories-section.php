@@ -24,7 +24,7 @@ $categories = mysqli_query($conn, "
 
             <?php while ($cat = mysqli_fetch_assoc($categories)) { ?>
                 <a 
-                    href="<?php echo $base_url; ?>shop.php?category=<?php echo $cat['slug']; ?>" 
+                    href="<?php echo $base_url; ?>pages/shop.php?category=<?php echo $cat['slug']; ?>" 
                     class="category-card"
                 >
                     <div class="category-content">

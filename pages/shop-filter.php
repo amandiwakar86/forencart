@@ -1,5 +1,5 @@
 <?php
-require_once "../includes/db.php";
+// header.php already starts session + db + base_url
 require_once "../includes/header.php";
 
 $category = $_POST['category'] ?? '';
@@ -15,7 +15,7 @@ if (!empty($category)) {
     $where .= " AND categories.slug = '$cat'";
 }
 
-/* SEARCH FILTER (THIS WAS MISSING) */
+/* SEARCH FILTER */
 if (!empty($search)) {
     $s = mysqli_real_escape_string($conn, $search);
     $where .= " AND (
@@ -25,13 +25,15 @@ if (!empty($search)) {
 }
 
 /* PRICE FILTER */
-if ($min !== '') {
+if ($min !== '' && is_numeric($min)) {
     $where .= " AND products.price >= " . (float)$min;
 }
-if ($max !== '') {
+
+if ($max !== '' && is_numeric($max)) {
     $where .= " AND products.price <= " . (float)$max;
 }
 
+/* FETCH PRODUCTS */
 $query = mysqli_query($conn, "
     SELECT products.*, categories.name AS category_name
     FROM products
@@ -40,24 +42,37 @@ $query = mysqli_query($conn, "
     ORDER BY products.id DESC
 ");
 
-if (mysqli_num_rows($query) === 0) {
+if (!$query || mysqli_num_rows($query) === 0) {
     echo "<p class='no-products'>No products found.</p>";
     exit;
 }
 
+/* OUTPUT PRODUCTS */
 while ($p = mysqli_fetch_assoc($query)) {
 ?>
     <div class="product-card">
-        <a href="../product.php?id=<?php echo $p['id']; ?>">
-        <img src="<?php echo $base_url; ?>assets/images/products/<?php echo $p['image'] ?: 'placeholder.png'; ?>">
+
+        <a href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $p['id']; ?>">
+            <img 
+                src="<?php echo $base_url; ?>assets/images/products/<?php echo $p['image'] ?: 'placeholder.png'; ?>" 
+                alt="<?php echo htmlspecialchars($p['name']); ?>"
+            >
         </a>
 
         <div class="product-info">
             <h4><?php echo htmlspecialchars($p['name']); ?></h4>
-            <p class="price">₹<?php echo number_format($p['price'], 2); ?></p>
-            <a href="../product.php?id=<?php echo $p['id']; ?>" class="view-btn">
+
+            <p class="price">
+                ₹<?php echo number_format($p['price'], 2); ?>
+            </p>
+
+            <a 
+                href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $p['id']; ?>" 
+                class="view-btn"
+            >
                 View Product
             </a>
         </div>
+
     </div>
 <?php } ?>

@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/header.php';
-include_once 'includes/navbar.php';
+include_once '../includes/header.php';
+include_once '../includes/navbar.php';
 
 /* URL se category & search */
 $initialCategory = $_GET['category'] ?? '';
@@ -13,7 +13,7 @@ $categories = mysqli_query(
 );
 ?>
 
-<link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/shop.css">
+<link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/shop.css">
 
 <main class="shop-page">
 
@@ -72,4 +72,4 @@ $categories = mysqli_query(
 <!-- SHOP JS -->
 <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
 
-<?php include_once 'includes/footer.php'; ?>
+<?php include_once '../includes/footer.php'; ?>
