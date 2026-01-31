@@ -17,20 +17,40 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Base URL (GLOBAL)
-$base_url = "http://localhost/forencart/";
+// define("BASE_URL", "http://192.168.1.5/forencart/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForenCart</title>
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/style.css">
+   <!-- /* These lines of code are linking external CSS files to the HTML document. */ -->
+ 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/hero.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/why-us.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/shop.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/products.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/product.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/mixed-products.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/footer.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/feature-products.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/contact.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/checkout.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/categories.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/cart.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/blog.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/auth.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/admin.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/admin-products.css">
 
     <!-- Main JS -->
-    <script src="<?php echo BASE_URL; ?>assets/js/main.js" defer></script>
+    <script src="<?php echo $base_url; ?>assets/js/navbar.js"></script>
+    <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
+    <script src="<?php echo $base_url; ?>assets/js/hero.js"></script>
+
 </head>
 <body>

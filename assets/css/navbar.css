@@ -212,3 +212,38 @@
     font-size: 13px;
     color: #444;
 }
+
+
+@media (max-width: 768px) {
+
+    .container-fluid {
+        padding: 0 12px;
+    }
+
+    .middle-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .nav-links {
+        display: none; /* mobile me hide */
+        flex-direction: column;
+        background: #fff;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .all-departments {
+        width: 100%;
+    }
+}
