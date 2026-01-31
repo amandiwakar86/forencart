@@ -1,5 +1,8 @@
 <?php
-include_once __DIR__ . '/../../includes/header.php';
+include_once __DIR__ . '/includes/header.php';
+include_once __DIR__ . '/config/config.php';
+
+// include_once __DIR__ . '/../../config/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +10,7 @@ include_once __DIR__ . '/../../includes/header.php';
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel | ForenCart</title>
-    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/admin.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/admin.css">
 </head>
 <body>
 

@@ -1,3 +1,3 @@
 <?php
-define("BASE_URL", "localhost/forencart/");
+define("BASE_URL", "http://localhost/forencart/");
 ?>

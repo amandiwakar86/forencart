@@ -86,7 +86,7 @@ $categoryIcons = [
                 </div>
                 <div class="contact-text">
                     <span class="label">
-                        Call Us Now: <span class="highlight">+91 8630750297</span>
+                        Call Us Now: <span class="highlight">+123-456-789</span>
                     </span>
                     <span class="email">Email: contact@forencart.com</span>
                 </div>
@@ -171,6 +171,5 @@ $categoryIcons = [
 
         </div>
     </nav>
-<div class="nav-spacer"></div>
 
 </header>
