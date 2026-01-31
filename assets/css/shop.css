@@ -22,6 +22,7 @@
 .shop-layout {
     display: flex;
     gap: 25px;
+    overflow: visible;   /* 🔴 MOST IMPORTANT */
 }
 
 /* ===============================
@@ -67,6 +68,17 @@
     color: #fff;
 }
 
+
+.shop-sidebar {
+    position: sticky;
+    top: 90px;          /* navbar ke niche space */
+    align-self: flex-start;
+}
+
+.shop-sidebar {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+}
 /* ===============================
    PRICE FILTER
 ================================ */
@@ -114,6 +126,7 @@
     transition: all 0.25s ease;
     display: flex;
     flex-direction: column;
+    height: 330px;
 }
 
 .product-card:hover {
