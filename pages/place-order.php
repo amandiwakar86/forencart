@@ -1,6 +1,13 @@
 <?php
 include '../includes/header.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id']; // 🔥 MOST IMPORTANT LINE
+
 $cart = $_SESSION['cart'] ?? [];
 
 if (empty($cart)) {
@@ -11,22 +18,22 @@ if (empty($cart)) {
 // Calculate total
 $total = 0;
 foreach ($cart as $id => $qty) {
-    $res = mysqli_query($conn, "SELECT price FROM products WHERE id=$id");
+    $res = mysqli_query($conn, "SELECT price FROM products WHERE id = $id");
     $p = mysqli_fetch_assoc($res);
     $total += $p['price'] * $qty;
 }
 
-// Insert order (user_id NULL for now)
+// ✅ Insert order WITH user_id
 mysqli_query($conn, "
     INSERT INTO orders (user_id, total, status)
-    VALUES (NULL, $total, 'pending')
+    VALUES ($user_id, $total, 'pending')
 ");
 
 $order_id = mysqli_insert_id($conn);
 
 // Insert order items
 foreach ($cart as $id => $qty) {
-    $res = mysqli_query($conn, "SELECT price FROM products WHERE id=$id");
+    $res = mysqli_query($conn, "SELECT price FROM products WHERE id = $id");
     $p = mysqli_fetch_assoc($res);
 
     mysqli_query($conn, "

@@ -1,5 +1,11 @@
 <?php
 require_once '../includes/header.php';
+require_once '../includes/navbar.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
 $user_id = $_SESSION['user_id'];
 
@@ -10,28 +16,28 @@ $orders = mysqli_query($conn, "
 ");
 ?>
 
-<h2>My Orders</h2>
+<link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/orders.css">
 
-<?php if (mysqli_num_rows($orders) == 0) { ?>
-    <p>No orders found.</p>
-<?php } else { ?>
-<table border="1" cellpadding="10">
-    <tr>
-        <th>Order ID</th>
-        <th>Total</th>
-        <th>Status</th>
-        <th>Date</th>
-    </tr>
+<div class="orders-container">
+    <h2>📦 My Orders</h2>
 
-    <?php while ($o = mysqli_fetch_assoc($orders)) { ?>
-    <tr>
-        <td>#<?php echo $o['id']; ?></td>
-        <td>₹<?php echo $o['total']; ?></td>
-        <td><?php echo $o['status']; ?></td>
-        <td><?php echo date('d M Y', strtotime($o['created_at'])); ?></td>
-    </tr>
+    <?php if (mysqli_num_rows($orders) == 0) { ?>
+        <p>You have not placed any orders yet.</p>
+    <?php } else { ?>
+
+        <?php while ($order = mysqli_fetch_assoc($orders)) { ?>
+            <div class="order-card">
+                <div class="order-top">
+                    <span><b>Order #<?php echo $order['id']; ?></b></span>
+                    <span><?php echo date('d M Y', strtotime($order['created_at'])); ?></span>
+                </div>
+
+                <p>Total: ₹<?php echo number_format($order['total'], 2); ?></p>
+                <p>Status: <b><?php echo $order['status']; ?></b></p>
+            </div>
+        <?php } ?>
+
     <?php } ?>
-</table>
-<?php } ?>
+</div>
 
 <?php include '../includes/footer.php'; ?>
