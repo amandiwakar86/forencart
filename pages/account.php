@@ -1,13 +1,13 @@
 <?php
-require_once '../config/config.php';
 require_once '../includes/header.php';
-require_once '../includes/navbar.php';
 
 // session check
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'user') {
     header("Location: ../auth/login.php");
     exit;
 }
+require_once '../config/config.php';
+require_once '../includes/navbar.php';
 
 $userName  = $_SESSION['user_name'];
 $userEmail = isset($_SESSION['user_email']) 

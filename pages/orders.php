@@ -1,12 +1,13 @@
 <?php
 require_once '../includes/header.php';
-require_once '../includes/navbar.php';
 
-/* 🔐 Login check */
+/* 🔐 Login check — MUST be before any HTML */
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
     exit;
 }
+
+require_once '../includes/navbar.php';
 
 $user_id = (int) $_SESSION['user_id'];
 
@@ -27,6 +28,11 @@ if (!$orders) {
 <div class="orders-page">
     <h2 class="orders-title">📦 My Orders</h2>
 
+    <!-- Status messages -->
+    <?php if (isset($_GET['msg']) && $_GET['msg'] === 'cancelled') { ?>
+        <p style="color:green;">Order cancelled successfully.</p>
+    <?php } ?>
+
     <?php if (mysqli_num_rows($orders) === 0) { ?>
         <p>No orders found.</p>
     <?php } ?>
@@ -36,7 +42,7 @@ if (!$orders) {
         <!-- LANDSCAPE ORDER CARD -->
         <div class="order-landscape-card">
 
-            <!-- LEFT : IMAGE (first product preview) -->
+            <!-- LEFT : Product image preview -->
             <div class="order-image">
                 <?php
                 $preview = mysqli_query($conn, "
@@ -51,7 +57,7 @@ if (!$orders) {
                 <img src="<?php echo $base_url; ?>assets/images/products/<?php echo $prev['image'] ?? 'placeholder.png'; ?>">
             </div>
 
-            <!-- CENTER : ORDER INFO -->
+            <!-- CENTER : Order info -->
             <div class="order-info">
                 <h3>Order #<?php echo $order['id']; ?></h3>
 
@@ -64,7 +70,7 @@ if (!$orders) {
                 </p>
             </div>
 
-            <!-- RIGHT : STATUS + ACTIONS -->
+            <!-- RIGHT : Status + Actions -->
             <div class="order-actions">
                 <span class="status <?php echo strtolower($order['status']); ?>">
                     <?php echo ucfirst($order['status']); ?>
@@ -75,13 +81,23 @@ if (!$orders) {
                     View Items ⌄
                 </button>
 
-                <a href="<?php echo $base_url; ?>pages/shop.php" class="btn shop">
-                    Shop More →
+                <a href="<?php echo $base_url; ?>pages/invoice.php?order_id=<?php echo $order['id']; ?>"
+                   class="btn invoice" target="_blank">
+                   Download Invoice
                 </a>
+
+                <?php if ($order['status'] === 'pending') { ?>
+                    <a href="<?php echo $base_url; ?>pages/cancel-order.php?order_id=<?php echo $order['id']; ?>"
+                       class="btn cancel"
+                       onclick="return confirm('Are you sure you want to cancel this order?');">
+                       Cancel Order
+                    </a>
+                <?php } ?>
+
             </div>
         </div>
 
-        <!-- 🔽 EXPANDABLE PRODUCTS LIST -->
+        <!-- 🔽 EXPANDABLE ITEMS -->
         <div class="order-items" id="items-<?php echo $order['id']; ?>">
 
             <?php
