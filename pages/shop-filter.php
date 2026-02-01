@@ -35,13 +35,23 @@ if ($max !== '' && is_numeric($max)) {
     $where .= " AND products.price <= " . (float)$max;
 }
 
+
+/* ORDER LOGIC */
+$orderBy = "ORDER BY products.id DESC";
+
+// 🔥 Sirf ALL PRODUCTS ke liye mix
+if (empty($category) && empty($search) && $min === '' && $max === '') {
+    $orderBy = "ORDER BY RAND()";
+}
+
+
 /* FETCH PRODUCTS */
 $query = mysqli_query($conn, "
     SELECT products.*, categories.name AS category_name
     FROM products
     LEFT JOIN categories ON products.category_id = categories.id
     $where
-    ORDER BY products.id DESC
+    $orderBy
 ");
 
 if (!$query || mysqli_num_rows($query) === 0) {
