@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Base URL (GLOBAL)
-// define("BASE_URL", "http://192.168.1.5/forencart/");
+// define("$base_url", "http://192.168.1.5/forencart/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,28 +29,28 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Main CSS -->
    <!-- /* These lines of code are linking external CSS files to the HTML document. */ -->
  
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/navbar.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/hero.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/why-us.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/shop.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/products.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/product.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/mixed-products.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/footer.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/feature-products.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/contact.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/checkout.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/categories.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/cart.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/blog.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/auth.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/admin.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/admin-products.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/navbar.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/hero.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/why-us.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/shop.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/products.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/product.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/mixed-products.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/footer.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/featured-products.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/contact.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/checkout.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/categories.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/cart.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/blog.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/auth.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/admin.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/admin-products.css">
 
     <!-- Main JS -->
-    <script src="<?php echo $base_url; ?>assets/js/navbar.js"></script>
-    <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
-    <script src="<?php echo $base_url; ?>assets/js/hero.js"></script>
+    <script src="<?php echo $$base_url; ?>assets/js/navbar.js"></script>
+    <script src="<?php echo $$base_url; ?>assets/js/shop.js"></script>
+    <script src="<?php echo $$base_url; ?>assets/js/hero.js"></script>
 
 </head>
 <body>
