@@ -88,11 +88,16 @@ while ($p = mysqli_fetch_assoc($query)) {
         </a>
 
         <div class="product-info">
+       
             <h4><?php echo htmlspecialchars($p['name']); ?></h4>
 
             <p class="price">
                 ₹<?php echo number_format($p['price'], 2); ?>
             </p>
+            <a href="javascript:void(0)"
+            onclick="addToWishlist(<?php echo $p['id']; ?>)">
+            ❤️ Add to Wishlist
+            </a>
 
             <a 
                 href="<?php echo $base_url; ?>pages/product.php?id=<?php echo $p['id']; ?>" 

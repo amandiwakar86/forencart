@@ -1,14 +1,69 @@
 <?php
-include_once '../includes/header.php';
+require_once '../config/config.php';
+require_once '../includes/header.php';
+require_once '../includes/navbar.php';
 
+// session check
 if (!isset($_SESSION['user_id'])) {
-    header("Location: auth/login.php");
+    header("Location: login.php");
     exit;
 }
+
+$userName  = $_SESSION['user_name'];
+$userEmail = isset($_SESSION['user_email']) 
+    ? $_SESSION['user_email'] 
+    : 'Not available';
 ?>
 
-<h2>My Account</h2>
+<link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/account.css">
 
-<p>Welcome, <strong><?php echo $_SESSION['user_name']; ?></strong></p>
+<div class="account-container">
 
-<a href="auth/logout.php">Logout</a>
+    <!-- SIDEBAR -->
+    <aside class="account-sidebar">
+        <h3>My Account</h3>
+        <ul>
+            <li class="active">Dashboard</li>
+            <li>My Orders</li>
+            <li>Wishlist</li>
+            <li>Settings</li>
+            <li>
+                <a href="logout.php" class="logout">Logout</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <section class="account-content">
+
+        <div class="welcome-card">
+            <h2>Welcome, <?php echo htmlspecialchars($userName); ?> 👋</h2>
+            <p><?php echo htmlspecialchars($userEmail); ?></p>
+        </div>
+
+        <div class="account-cards">
+
+            <div class="card">
+                <h4>My Orders</h4>
+                <p>View your recent orders</p>
+                <a href="orders.php">View Orders →</a>
+            </div>
+
+            <div class="card">
+                <h4>Wishlist</h4>
+                <p>Your saved products</p>
+                <a href="wishlist.php">View Wishlist →</a>
+            </div>
+
+            <div class="card">
+                <h4>Account Settings</h4>
+                <p>Update your profile</p>
+                <a href="settings.php">Edit Profile →</a>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<?php include '../includes/footer.php'; ?>

@@ -53,6 +53,8 @@ $relatedProducts = mysqli_query($conn, "
 
         <!-- INFO -->
         <div class="product-info">
+            
+
             <h1><?php echo htmlspecialchars($product['name']); ?></h1>
 
             <p class="category">
@@ -70,6 +72,11 @@ $relatedProducts = mysqli_query($conn, "
                 class="add-to-cart">
                 Add to Cart
             </a>
+            <a href="javascript:void(0)"
+            onclick="addToWishlist(<?php echo $p['id']; ?>)">
+            ❤️ Add to Wishlist
+            </a>
+
         </div>
 
     </div>
