@@ -1,54 +1,31 @@
 <?php
 include_once '../includes/header.php';
 
-$error = "";
+$msg = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name  = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $pass  = $_POST['password'];
 
-    if (empty($name) || empty($email) || empty($pass)) {
-        $error = "All fields are required";
-    } else {
-        $hash = password_hash($pass, PASSWORD_DEFAULT);
+    $name  = $_POST['name'];
+    $email = $_POST['email'];
+    $pass  = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $stmt = mysqli_prepare($conn,
-            "INSERT INTO users (name, email, password) VALUES (?, ?, ?)"
-        );
-        mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hash);
+    mysqli_query($conn, "
+        INSERT INTO users (name, email, password)
+        VALUES ('$name', '$email', '$pass')
+    ");
 
-        if (mysqli_stmt_execute($stmt)) {
-            header("Location: login.php");
-            exit;
-        } else {
-            $error = "Email already exists";
-        }
-    }
+    $msg = "Account created. Please login.";
 }
 ?>
 
-<link rel="stylesheet" href="../assets/css/auth.css">
+<link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/auth.css">
 
-<div class="auth-page">
-    <div class="auth-box">
-        <h2>Create Account</h2>
+<form method="post">
+    <input name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button>Create Account</button>
+</form>
 
-        <?php if ($error) { ?>
-            <p class="auth-error"><?php echo $error; ?></p>
-        <?php } ?>
-
-        <form method="post">
-            <input type="text" name="name" placeholder="Full Name">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-
-            <button type="submit">Register</button>
-        </form>
-
-        <p class="auth-link">
-            Already have an account?
-            <a href="login.php">Login</a>
-        </p>
-    </div>
-</div>
+<p><?php echo $msg; ?></p>
+<a href="login.php">Back to login</a>

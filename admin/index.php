@@ -1,6 +1,18 @@
 <?php
 require_once __DIR__ . "/../config/config.php";
+include "../includes/header.php";
+
+if (
+    !isset($_SESSION['user_id']) ||
+    !isset($_SESSION['user_role']) ||
+    $_SESSION['user_role'] !== 'admin'
+) {
+    header("Location: " . $base_url . "auth/login.php");
+    exit;
+}
+
 require_once __DIR__ . "/includes/admin-header.php";
+
 ?>
 
 <main class="admin-content">

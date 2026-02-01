@@ -4,8 +4,8 @@ require_once '../includes/header.php';
 require_once '../includes/navbar.php';
 
 // session check
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'user') {
+    header("Location: ../auth/login.php");
     exit;
 }
 

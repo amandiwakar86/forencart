@@ -1,4 +1,9 @@
 <?php
+// Start session only once
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Load config & database
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/db.php';
@@ -11,10 +16,6 @@ function cartCount() {
     return array_sum($_SESSION['cart']);
 }
 
-// Start session only once
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 // Base URL (GLOBAL)
 // define("$base_url", "http://192.168.1.5/forencart/");
