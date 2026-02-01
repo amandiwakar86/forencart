@@ -1,7 +1,8 @@
 <?php
-include 'includes/admin-header.php';
-include 'includes/admin-sidebar.php';
 
+require_once __DIR__ . "/../config/config.php";
+require_once __DIR__ . "/../includes/db.php";
+require_once __DIR__ . "/includes/admin-header.php";
 // Fetch categories
 $categories = mysqli_query($conn, "SELECT * FROM categories ORDER BY name ASC");
 
