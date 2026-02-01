@@ -19,12 +19,28 @@ if (!empty($category)) {
 
 /* SEARCH FILTER */
 if (!empty($search)) {
-    $s = mysqli_real_escape_string($conn, $search);
-    $where .= " AND (
-        products.name LIKE '%$s%' 
-        OR products.description LIKE '%$s%'
-    )";
+
+    $search = trim($search);
+    $keywords = explode(" ", $search);
+    $conditions = [];
+
+    foreach ($keywords as $word) {
+        $word = mysqli_real_escape_string($conn, strtolower($word));
+
+        $conditions[] = "
+            (
+                LOWER(products.name) LIKE '%$word%' 
+                OR LOWER(products.description) LIKE '%$word%'
+                OR LOWER(products.tags) LIKE '%$word%'
+                OR LOWER(categories.name) LIKE '%$word%'
+            )
+        ";
+    }
+
+    $where .= " AND (" . implode(" OR ", $conditions) . ")";
 }
+
+
 
 /* PRICE FILTER */
 if ($min !== '' && is_numeric($min)) {

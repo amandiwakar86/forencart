@@ -80,6 +80,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label>Change Image (optional)</label>
         <input type="file" name="image">
 
+        <div class="form-group">
+            <label>Product Tags</label>
+            <input 
+                type="text" 
+                name="tags" 
+                placeholder="e.g. clothes, fashion, shirt, men"
+                class="form-control"
+            >
+            <small>Comma separated keywords</small>
+        </div>
+
+
         <button type="submit">Update Product</button>
 
     </form>

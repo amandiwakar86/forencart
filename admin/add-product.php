@@ -23,9 +23,15 @@ if (isset($_POST['save_product'])) {
         );
     }
 
+
+    $tags = isset($_POST['tags']) 
+            ? mysqli_real_escape_string($conn, strtolower($_POST['tags'])) 
+            : '';
+ 
     mysqli_query($conn, "
-        INSERT INTO products (category_id, name, price, description, image)
-        VALUES ('$category_id', '$name', '$price', '$description', '$image_name')
+        INSERT INTO products (name, description, price, category_id, image, tags)
+        VALUES ('$name', '$description', '$price', '$category_id', '$image', '$tags')
+
     ");
 
     header("Location: products.php");
@@ -71,6 +77,17 @@ if (isset($_POST['save_product'])) {
         <div class="form-group">
             <label>Product Image</label>
             <input type="file" name="image" required>
+        </div>
+
+        <div class="form-group">
+            <label>Product Tags</label>
+                <input 
+                    type="text" 
+                    name="tags" 
+                    placeholder="e.g. clothes, fashion, shirt, men"
+                    class="form-control"
+                    >
+                <small>Comma separated keywords</small>
         </div>
 
         <button type="submit" name="save_product" class="admin-btn">
