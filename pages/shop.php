@@ -69,4 +69,5 @@ $categories = mysqli_query(
 </script>
 
 <!-- SHOP JS -->
+ <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
 <?php include_once '../includes/footer.php'; ?>

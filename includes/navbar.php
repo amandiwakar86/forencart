@@ -1,5 +1,4 @@
 <?php
-$base_url = "http://localhost/forencart/";
 
 $categoryIcons = [
     'electronics'   => 'fa-laptop',

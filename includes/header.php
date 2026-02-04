@@ -41,7 +41,6 @@ function cartCount() {
     <!-- 🔹 GLOBAL JS (FUNCTIONALITY) -->
     <script src="<?php echo $base_url; ?>assets/js/navbar.js" defer></script>
     <script src="<?php echo $base_url; ?>assets/js/hero.js" defer></script>
-    <script src="<?php echo $base_url; ?>assets/js/shop.js" defer></script>
     <script src="<?php echo $base_url; ?>assets/js/wishlist.js" defer></script>
 </head>
 <body>
