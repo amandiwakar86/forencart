@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/footer.css">
+<?php
+require_once 'header.php';
+?>
+
 
 <footer class="site-footer">
 
@@ -45,4 +48,3 @@
     </div>
 
 </footer>
-<script src="<?php echo $base_url; ?>assets/js/navbar.js"></script>

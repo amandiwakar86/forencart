@@ -1,5 +1,5 @@
 <?php
-include_once '../includes/header.php';
+require_once '../includes/header.php';
 include_once '../includes/navbar.php';
 
 /* URL se category & search */
@@ -13,7 +13,6 @@ $categories = mysqli_query(
 );
 ?>
 
-<link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/shop.css">
 
 <main class="shop-page">
 
@@ -70,6 +69,4 @@ $categories = mysqli_query(
 </script>
 
 <!-- SHOP JS -->
-<script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
-
 <?php include_once '../includes/footer.php'; ?>

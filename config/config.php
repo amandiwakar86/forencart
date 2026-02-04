@@ -1,3 +1,4 @@
 <?php
-$base_url = "http://localhost/forencart/";?>
+$base_url = "http://" . $_SERVER['HTTP_HOST'] . "/forencart/";
+?>
 

@@ -16,9 +16,6 @@ function cartCount() {
     return array_sum($_SESSION['cart']);
 }
 
-
-// Base URL (GLOBAL)
-// define("$base_url", "http://192.168.1.5/forencart/");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,15 +24,24 @@ function cartCount() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForenCart</title>
 
-    <!-- Main CSS -->
-   <!-- /* These lines of code are linking external CSS files to the HTML document. */ -->
- 
+    <!-- 🔹 GLOBAL CSS -->
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/navbar.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/hero.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/categories.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/featured-products.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/why-us.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/shop.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>assets/css/footer.css">
    
-    <!-- Main JS -->
+    <!-- 🔹 BASE URL FOR JS -->
     <script>
         const BASE_URL = "<?php echo $base_url; ?>";
     </script>
-    <script src="<?php echo $base_url; ?>assets/js/wishlist.js"></script>
 
+    <!-- 🔹 GLOBAL JS (FUNCTIONALITY) -->
+    <script src="<?php echo $base_url; ?>assets/js/navbar.js" defer></script>
+    <script src="<?php echo $base_url; ?>assets/js/hero.js" defer></script>
+    <script src="<?php echo $base_url; ?>assets/js/shop.js" defer></script>
+    <script src="<?php echo $base_url; ?>assets/js/wishlist.js" defer></script>
 </head>
 <body>

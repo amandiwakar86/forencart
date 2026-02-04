@@ -1,6 +1,6 @@
 
 <?php
-include_once '../includes/header.php';
+require_once '../includes/header.php';
 include_once '../includes/navbar.php';
 
 /* VALIDATE PRODUCT ID */
@@ -106,5 +106,4 @@ $relatedProducts = mysqli_query($conn, "
     <?php } ?>
 
 </main>
-
 <?php include_once '../includes/footer.php'; ?>
