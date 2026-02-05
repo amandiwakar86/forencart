@@ -94,7 +94,7 @@ while ($p = mysqli_fetch_assoc($query)) {
             <p class="price">
                 ₹<?php echo number_format($p['price'], 2); ?>
             </p>
-            <a href="javascript:void(0)"
+            <a style="text-decoration:none;" href="javascript:void(0)"
             onclick="addToWishlist(<?php echo $p['id']; ?>)">
             ❤️ Add to Wishlist
             </a>
