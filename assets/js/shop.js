@@ -48,3 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
     /* INITIAL LOAD */
     loadProducts();
 });
+
+
+const categoryLinks = document.querySelectorAll("#categoryList a");
+
+categoryLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        categoryLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+    });
+});
+

@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/header.php';
+include_once '../includes/header.php';
 include_once '../includes/navbar.php';
 
 /* URL se category & search */
@@ -13,6 +13,7 @@ $categories = mysqli_query(
 );
 ?>
 
+<link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/shop.css">
 
 <main class="shop-page">
 
@@ -26,32 +27,34 @@ $categories = mysqli_query(
 
     <div class="shop-layout">
 
-        <!-- SIDEBAR -->
-        <aside class="shop-sidebar">
+                <!-- 🔹 STICKY TOP FILTER BAR -->
+        <div class="shop-filter-top">
 
-            <h3>Categories</h3>
-            <ul id="categoryList">
-                <li>
-                    <a href="#" data-category="">All Products</a>
-                </li>
+            <!-- Categories -->
+            <div class="filter-categories">
+                <span class="filter-title">Categories:</span>
+                <ul id="categoryList">
+                    <li><a href="#" data-category="" class="active">All</a></li>
 
-                <?php while ($cat = mysqli_fetch_assoc($categories)) { ?>
-                    <li>
-                        <a href="#" data-category="<?php echo $cat['slug']; ?>">
-                            <?php echo htmlspecialchars($cat['name']); ?>
-                        </a>
-                    </li>
-                <?php } ?>
-            </ul>
+                    <?php while ($cat = mysqli_fetch_assoc($categories)) { ?>
+                        <li>
+                            <a href="#" data-category="<?php echo $cat['slug']; ?>">
+                                <?php echo htmlspecialchars($cat['name']); ?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
 
-            <h3>Filter by Price</h3>
-            <form id="priceFilter">
+            <!-- Price Filter -->
+            <form id="priceFilter" class="filter-price">
                 <input type="number" id="minPrice" placeholder="Min ₹">
+                <span class="dash">–</span>
                 <input type="number" id="maxPrice" placeholder="Max ₹">
                 <button type="submit">Apply</button>
             </form>
 
-        </aside>
+        </div>
 
         <!-- PRODUCTS -->
         <section class="shop-products" id="shopProducts">
@@ -69,5 +72,6 @@ $categories = mysqli_query(
 </script>
 
 <!-- SHOP JS -->
- <script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
+<script src="<?php echo $base_url; ?>assets/js/shop.js"></script>
+
 <?php include_once '../includes/footer.php'; ?>

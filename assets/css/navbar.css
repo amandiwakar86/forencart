@@ -186,6 +186,7 @@
     align-items: center;
     font-weight: bold;
     cursor: pointer;
+    gap: 10px;
 }
 
 /* Dropdown container */
