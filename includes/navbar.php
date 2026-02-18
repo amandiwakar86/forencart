@@ -33,27 +33,10 @@ $categoryIcons = [
                     <a href="<?php echo $base_url; ?>auth/login.php">Login</a>
                 <?php } ?>
             </div>
-
                 <!-- RIGHT SIDE -->
-            <div class="top-right">
-                <ul>
-                    <?php if (isset($_SESSION['user_id'])) { ?>
-                        <li>
-                            <a href="<?php echo $base_url; ?>pages/account.php">My Account</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $base_url; ?>auth/logout.php">Logout</a>
-                        </li>
-                    <?php } else { ?>
-                        <li>
-                            <a href="<?php echo $base_url; ?>auth/login.php">Login</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $base_url; ?>auth/register.php">Register</a>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </div>
+                <div class="top-right">
+                    <span>🚚 Free Shipping on Orders Above ₹999 | 🔒 Secure Payments</span>
+                </div>
 
             </div>
         </div>
